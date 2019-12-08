@@ -76,15 +76,5 @@ picketserver
     ├── urls.py
     └── views.py
 ```
-## Team Information
-> **Member 1: Kim Woo Kyung**
-> [Team Leader, Backend]
->
-> **Member 2: Moon Jae Wan**
-> [Machine Learning]
->
-> **Member 3: Ju Hye Won**
-> [Frontend]
->
-> **Member 4: Seung Chang Min**
-> [Backend]
+
+![picket-gif-min](https://user-images.githubusercontent.com/18145509/70392890-9c817d00-1a27-11ea-8d1c-d4a01c3fc4eb.gif)
