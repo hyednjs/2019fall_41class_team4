@@ -2,13 +2,6 @@
 ### Integrated shopping mall service
 
 ## Running Backend
-0. check dependencies:
-```
-$ sudo install python3
-$ sudo install django
-$ sudo install selenium
-$ sudo install BeautifulSoup4
-```
 1. clone the repo:
 ```
 $ git clone https://github.com/skkuse02/2019fall_41class_team4.git
