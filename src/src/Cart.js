@@ -3,14 +3,12 @@ import React, { useState, useEffect } from 'react';
 import './Cart.css';
 import { NotificationContainer, NotificationManager } from 'react-notifications';
 import 'react-notifications/lib/notifications.css';
-import { loadLoginInfo } from "./authlib";
 import Modal from './Modal/Modal';
-import getProductInfo from 'product-info-parser';
+import getProductInfo from 'chrome-extension-product-info-parser';
 
 function openUrl(url) {
     window.open(url);
 }
-
 
 function ItemCard(props) {
     return (
@@ -49,7 +47,7 @@ function ItemCard(props) {
                     </div>
 
                     <a class="cart" href="#" onClick={() => props.removeItem(props.itemInfo)}>
-                        <span class="price">{props.itemInfo.item_price}원</span>
+                        <span class="price">{props.itemInfo.item_price}</span>
                         <span class="add-to-cart" >
                             <span class="txt">Delete</span>
                         </span>
@@ -69,7 +67,6 @@ function Cart(props) {
     }
 
     const [item_info, setItemInfo] = useState([]);
-    const [user_id, setID] = useState('');
     const [url, setUrl] = useState('');
     const [isModalOpen, setModalOpen] = useState(false);
     const [modifyIndex, setModifyIndex] = useState(-1);
@@ -94,8 +91,18 @@ function Cart(props) {
     }
 
     function addItem() {
-
+        getProductInfo()
+            .then(result => {
+                setItemInfo(item_info.concat({
+                    item_name: result.title[1],
+                    item_price: result.price,
+                    item_image: result.image
+                }
+                ))
+            })
+            .catch(console.log);
     }
+
     function saveItem() {
     }
 
@@ -121,7 +128,7 @@ function Cart(props) {
             <div class="menu-bar">
                 <img class="menu icon1" src="img/shopping-cart.png" />
                 <h2 class="menu picket">PICKET</h2>
-                <h2 class="menu price">PRICE : {getTotalPrice()}원</h2>
+                <h2 class="menu price">PRICE : {getTotalPrice()}</h2>
                 <div class=" menu contact-box" onClick={props.openRequest}>
                     <img class="menu icon2" src="img/phone.png" />
                     <h2 class="menu contact">Contact Us</h2>

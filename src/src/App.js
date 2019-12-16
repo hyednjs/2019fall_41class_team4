@@ -2,14 +2,10 @@
 import React, { useState } from 'react';
 import Request from './Request';
 import Cart from './Cart';
-import { loadLoginInfo, logout } from './authlib';
-import { tsPropertySignature } from '@babel/types';
-
 function App() {
 
   const [page, setPage] = useState('cart');
   const [url, setUrl] = useState('');
-
 
   function openRequest() {
     setPage('request');
